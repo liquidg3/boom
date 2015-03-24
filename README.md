@@ -10,3 +10,5 @@ $('#element-wrapping-images').boom();
 ```
 
 Done.
+
+[Live Demo](http://taylorrome.ro/boom/demos/amishtechnologist.html)
