@@ -1,0 +1,60 @@
+#washers1,
+#washers2 {
+  position: relative;
+  width: 760px;
+  height: 445px;
+  margin: 0 auto;
+}
+#washers1 img,
+#washers2 img {
+  position: absolute;
+}
+#washers1 .back,
+#washers2 .back {
+  left: 110px;
+}
+#washers1 .can,
+#washers2 .can {
+  left: 270px;
+  top: 103px;
+}
+#washers1 .canvas,
+#washers2 .canvas {
+  left: 50px;
+  top: 160px;
+}
+#washers1 .front,
+#washers2 .front {
+  bottom: 0px;
+  left: 42px;
+}
+#washers1 .right,
+#washers2 .right {
+  right: 0px;
+}
+#washers2 {
+  width: 400px;
+  height: 265px;
+}
+#washers2 .back {
+  left: 1px;
+}
+#washers2 .can {
+  left: 140px;
+  top: 53px;
+}
+#washers2 .canvas {
+  left: 9px;
+  top: 78px;
+}
+#washers2 .front {
+  bottom: 0px;
+  left: 44px;
+}
+#washers2 .left {
+  top: 34px;
+  left: 1px;
+}
+#washers2 .right {
+  right: -1px;
+}
