@@ -102,7 +102,6 @@
                     start = JSON.parse($(this).attr('data-start'));
 
                 $(this).data('starting-pos', pos).data('ending-pos', start);
-                console.log('saved old position');
 
             });
 
@@ -118,7 +117,7 @@
 
                 place();
 
-            }, 250);
+            }, 1500);
 
 
 
