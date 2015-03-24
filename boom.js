@@ -27,7 +27,6 @@
                     percent,
                     position        = 'above';
 
-
                 if(y > landingBottom) {
                     distance = y - landingBottom;
                     percent = distance / (windowHeight - landingBottom);
@@ -87,28 +86,55 @@
 
                     $(this).css(css);
 
-                    console.log('placed images');
-
                 });
 
-                //console.log('placing at', percent);
 
             }.bind(this);
 
-            //store starting position of all inner images
-            $(this).find('img').each(function (idx) {
+            var images = [];
 
-                var pos = $(this).position(),
-                    start = JSON.parse($(this).attr('data-start'));
+            var preloadImages = function (preload, cb) {
 
-                $(this).data('starting-pos', pos).data('ending-pos', start);
+                var promises = [];
+                for (var i = 0; i < preload.length; i++) {
+                    (function (url, promise) {
+                        var img = new Image();
+                        img.onload = function () {
+                            promise.resolve();
+                        };
+                        img.onerror = function () {
+                            promise.resolve();
+                        }
+                        img.src = url;
+                    })(preload[i], promises[i] = $.Deferred());
+                }
+                $.when.apply($, promises).done(function () {
+                    cb();
+                });
+
+            };
+
+            $(this).find('img').each(function () {
+
+                var src = $(this).attr('src');
+                images.push(src);
 
             });
 
+            console.log('preloading', images);
 
+            preloadImages(images, function () {
 
+                //store starting position of all inner images
+                $(this).find('img').each(function (idx) {
 
-            setTimeout(function () {
+                    var pos = $(this).position(),
+                        start = JSON.parse($(this).attr('data-start'));
+
+                    $(this).data('starting-pos', pos).data('ending-pos', start);
+
+                });
+
 
 
                 $(window).scroll(function(e) {
@@ -117,12 +143,12 @@
 
                 place();
 
-            }, 1500);
+            }.bind(this));
+
 
 
 
         });
-
 
         return this;
 
